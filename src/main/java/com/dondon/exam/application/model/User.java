@@ -1,5 +1,6 @@
 package com.dondon.exam.application.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -7,12 +8,14 @@ import jakarta.persistence.Id;
 
 import java.util.Date;
 
-@Entity
+@Entity(name = "Users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String userame;
+    @JsonIgnore
+    private String username;
+    @JsonIgnore
     private String password;
     private String lastName;
     private String firstName;
@@ -27,12 +30,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUserame() {
-        return userame;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserame(String userame) {
-        this.userame = userame;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
